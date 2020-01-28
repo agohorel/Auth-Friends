@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
-const FriendsList = () => {
-  return <div>secret friends go here</div>;
+import FriendCard from "./FriendCard";
+import { getFriends } from "../actions/getFriendsAction";
+
+const FriendsList = ({ friends, getFriends }) => {
+  useEffect(() => {
+    getFriends();
+  }, [getFriends]);
+
+  return (
+    <>
+      {friends.map(friend => (
+        <FriendCard key={friend.id} friend={friend}></FriendCard>
+      ))}
+    </>
+  );
 };
 
-export default FriendsList;
+const mapStateToProps = state => {
+  return {
+    friends: state.friends
+  };
+};
+
+export default connect(mapStateToProps, { getFriends })(FriendsList);

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import { login } from "../actions/loginAction";
-console.log(login);
 
 const LoginForm = ({ login }) => {
   const [formData, setFormData] = useState({ username: "", password: "" });

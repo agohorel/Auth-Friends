@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { login } from "../actions/loginAction";
 
-const LoginForm = ({ login }) => {
+const LoginForm = ({ login, history }) => {
   const [formData, setFormData] = useState({ username: "", password: "" });
 
   const handleChange = e => {
@@ -13,6 +13,7 @@ const LoginForm = ({ login }) => {
   const handleSubmit = e => {
     e.preventDefault();
     login(formData);
+    history.push("/friends");
   };
 
   return (

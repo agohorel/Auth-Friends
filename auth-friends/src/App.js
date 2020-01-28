@@ -10,7 +10,7 @@ function App() {
   return (
     <div>
       <Router>
-        <Route path="/login" component={LoginForm} />
+        <Route exact path={["/", "/login"]} component={LoginForm} />
         <PrivateRoute path="/friends" component={FriendsList} />
         <PrivateRoute path="/add-friend" component={Form} />
       </Router>

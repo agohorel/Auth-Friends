@@ -7,7 +7,7 @@ import { getFriends } from "../actions/getFriendsAction";
 const FriendsList = ({ friends, getFriends }) => {
   useEffect(() => {
     getFriends();
-  }, [getFriends]);
+  }, [getFriends, friends]);
 
   return (
     <>

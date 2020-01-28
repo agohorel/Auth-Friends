@@ -3,7 +3,9 @@ import {
   AUTH_SUCCESS,
   AUTH_FAILURE,
   GET_FRIENDS_SUCCESS,
-  GET_FRIENDS_FAILURE
+  GET_FRIENDS_FAILURE,
+  ADD_FRIEND_SUCCESS,
+  ADD_FRIEND_FAILURE
 } from "../actions/types";
 
 const initialState = {
@@ -30,23 +32,21 @@ export const friendReducer = (state = initialState, action) => {
         loading: false,
         isAuthenticated: true
       };
-    case AUTH_FAILURE:
-      return {
-        ...state,
-        errors: payload,
-        isAuthenticated: false
-      };
     case GET_FRIENDS_SUCCESS:
+    case ADD_FRIEND_SUCCESS:
       return {
         ...state,
         loading: false,
         friends: payload
       };
+
+    case AUTH_FAILURE:
     case GET_FRIENDS_FAILURE:
+    case ADD_FRIEND_FAILURE:
       return {
         ...state,
-        loading: false,
-        error: payload
+        errors: payload,
+        isAuthenticated: false
       };
     default:
       return state;

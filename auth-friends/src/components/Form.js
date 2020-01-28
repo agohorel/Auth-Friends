@@ -1,30 +1,56 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
 
-export const Form = () => {
-  const [formData, setFormData] = useState({});
+import { addFriend } from "../actions/addFriendAction";
+
+const Form = ({ addFriend, history }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    age: "",
+    email: ""
+  });
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
     console.log(formData);
   };
 
-  const handleSubmit = async e => {
-    e.preventDefault;
-    try {
-      axios.post("http://localhost:5000/api/login", formData);
-    } catch (err) {
-      console.error(err);
-    }
+  const handleSubmit = e => {
+    e.preventDefault();
+    const friendData = {
+      ...formData,
+      id: Date.now()
+    };
+    addFriend(friendData);
+    history.push("/friends");
   };
 
   return (
-    <form>
-      <label htmlFor="username"></label>
-      <input type="text" id="username" value={formData.username} />
-      <label htmlFor="password"></label>
-      <input type="password" id="password" value={formData.password} />
-      <button>log in</button>
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="name">name</label>
+      <input
+        type="text"
+        id="name"
+        value={formData.name}
+        onChange={handleChange}
+      />
+      <label htmlFor="age"></label>
+      <input
+        type="text"
+        id="age"
+        value={formData.age}
+        onChange={handleChange}
+      />
+      <label htmlFor="email">email</label>
+      <input
+        type="email"
+        id="email"
+        value={formData.email}
+        onChange={handleChange}
+      />
+      <button>add friend</button>
     </form>
   );
 };
+
+export default connect(undefined, { addFriend })(Form);

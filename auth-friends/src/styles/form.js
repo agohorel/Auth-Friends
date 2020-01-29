@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Form = styled.form`
   margin: 10rem auto;
-  width: 50%;
+  width: 34%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +18,7 @@ export const Form = styled.form`
 
   input {
     border: none;
-    width: 50%;
+    width: 67%;
     background-color: #9c9c9c;
     color: #1c1c1c;
     padding: 0.25rem;

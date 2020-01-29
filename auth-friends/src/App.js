@@ -5,6 +5,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import LoginForm from "./components/LoginForm";
 import FriendsList from "./components/FriendsList";
 import Form from "./components/Form";
+import Edit from "./components/Edit";
 import GlobalStyle from "./styles/global";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route exact path={["/", "/login"]} component={LoginForm} />
         <PrivateRoute path="/friends" component={FriendsList} />
         <PrivateRoute path="/add-friend" component={Form} />
+        <PrivateRoute path="/edit-friend" component={Edit} />
       </Router>
     </div>
   );

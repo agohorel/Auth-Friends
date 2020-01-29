@@ -7,8 +7,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import FriendCard from "./FriendCard";
 import { getFriends } from "../actions/getFriendsAction";
 
-const FriendsList = ({ loading, friends, getFriends }) => {
-  console.log(friends);
+const FriendsList = ({ loading, friends, getFriends, history }) => {
   useEffect(() => {
     getFriends();
   }, [getFriends]);
@@ -29,7 +28,11 @@ const FriendsList = ({ loading, friends, getFriends }) => {
     return (
       <Container>
         {friends.map(friend => (
-          <FriendCard key={friend.id} friend={friend}></FriendCard>
+          <FriendCard
+            key={friend.id}
+            friend={friend}
+            history={history}
+          ></FriendCard>
         ))}
       </Container>
     );

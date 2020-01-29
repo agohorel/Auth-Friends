@@ -3,19 +3,30 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import { deleteFriend } from "../actions/deleteFriendAction";
+import { selectFriendToEdit } from "../actions/editFriendAction";
 
-const FriendCard = ({ friend, deleteFriend }) => {
+const FriendCard = ({ friend, deleteFriend, selectFriendToEdit, history }) => {
+  const handleEdit = friend => {
+    selectFriendToEdit(friend);
+    history.push("/edit-friend");
+  };
+
   return (
     <Card>
       <h3>{friend.name}</h3>
       <p>{friend.age} years old</p>
       <p>{friend.email}</p>
-      <Btn onClick={() => deleteFriend(friend.id)}>don't taze me bro</Btn>
+      <Btn onClick={() => handleEdit(friend)}>edit</Btn>
+      <Btn onClick={() => deleteFriend(friend.id)} color="red">
+        delete
+      </Btn>
     </Card>
   );
 };
 
-export default connect(undefined, { deleteFriend })(FriendCard);
+export default connect(undefined, { deleteFriend, selectFriendToEdit })(
+  FriendCard
+);
 
 const Card = styled.div`
   display: inline-block;
@@ -36,7 +47,7 @@ const Btn = styled.button`
   border: none;
   padding: 0.25rem 0.5rem;
   border-radius: 3px;
-  background-color: #3c3c3c;
+  background-color: ${props => (props.color === "red" ? "#BD2008" : "#3c3c3c")};
   color: #eee;
 
   :hover {

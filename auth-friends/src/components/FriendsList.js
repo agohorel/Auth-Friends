@@ -7,10 +7,18 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import FriendCard from "./FriendCard";
 import { getFriends } from "../actions/getFriendsAction";
 
-const FriendsList = ({ loading, friends, getFriends, history }) => {
+const FriendsList = ({
+  loading,
+  friends: friendsFromRedux,
+  getFriends,
+  history
+}) => {
   useEffect(() => {
     getFriends();
   }, [getFriends]);
+
+  localStorage.setItem("friends", JSON.stringify(friendsFromRedux));
+  const friends = JSON.parse(localStorage.getItem("friends"));
 
   if (loading) {
     return (

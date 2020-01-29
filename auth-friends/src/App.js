@@ -15,10 +15,10 @@ function App() {
       <GlobalStyle />
       <Router>
         <Route component={Nav}></Route>
-        <Route exact path={["/", "/login"]} component={LoginForm} />
         <PrivateRoute path="/friends" component={FriendsList} />
         <PrivateRoute path="/add-friend" component={Form} />
         <PrivateRoute path="/edit-friend" component={Edit} />
+        <Route exact path="/" component={LoginForm} />
       </Router>
     </div>
   );

@@ -4,10 +4,10 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = ({ history }) => {
-  console.log(history);
+
   const logOut = () => {
     localStorage.removeItem("token");
-    history.push("/login");
+    history.push("/");
   };
 
   return (

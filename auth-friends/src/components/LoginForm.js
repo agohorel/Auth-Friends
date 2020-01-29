@@ -11,9 +11,9 @@ const LoginForm = ({ login, history }) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    login(formData);
+    await login(formData);
     history.push("/friends");
   };
 

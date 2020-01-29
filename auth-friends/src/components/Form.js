@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import { addFriend } from "../actions/addFriendAction";
+import { Form as StyledForm } from "../styles/form";
 
 const Form = ({ addFriend, history }) => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const Form = ({ addFriend, history }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <label htmlFor="name">name</label>
       <input
         type="text"
@@ -33,7 +34,7 @@ const Form = ({ addFriend, history }) => {
         value={formData.name}
         onChange={handleChange}
       />
-      <label htmlFor="age"></label>
+      <label htmlFor="age">age</label>
       <input
         type="text"
         id="age"
@@ -48,7 +49,7 @@ const Form = ({ addFriend, history }) => {
         onChange={handleChange}
       />
       <button>add friend</button>
-    </form>
+    </StyledForm>
   );
 };
 

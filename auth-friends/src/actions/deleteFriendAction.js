@@ -11,7 +11,7 @@ export const deleteFriend = id => async dispatch => {
   try {
     const res = await axiosWithAuth().delete(`friends/${id}`);
     console.log(res);
-    dispatch({ type: DELETE_FRIEND_SUCCESS }); // payload?
+    dispatch({ type: DELETE_FRIEND_SUCCESS, payload: res.data });
   } catch (err) {
     console.error(err);
     dispatch({ type: DELETE_FRIEND_FAILURE });

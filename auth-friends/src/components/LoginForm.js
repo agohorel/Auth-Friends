@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
+import { Form } from "../styles/form";
 import { login } from "../actions/loginAction";
 
 const LoginForm = ({ login, history }) => {
@@ -17,7 +18,7 @@ const LoginForm = ({ login, history }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <label htmlFor="username">username</label>
       <input
         type="text"
@@ -33,7 +34,7 @@ const LoginForm = ({ login, history }) => {
         onChange={handleChange}
       />
       <button>log in</button>
-    </form>
+    </Form>
   );
 };
 
